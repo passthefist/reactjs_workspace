@@ -1,9 +1,5 @@
-FROM node:8 as reactjs_server
-WORKDIR /app
-COPY . ./   
-RUN yarn
-
-EXPOSE 5000
-RUN yarn build
-
-CMD ["yarn", "serve"]
+FROM node:20 as reactjs_server
+WORKDIR /usr/app
+COPY package.json .
+RUN npm install
+COPY . .

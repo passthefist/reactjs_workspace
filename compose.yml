@@ -1,8 +1,10 @@
+version: "2"
 services:
-    httpd:
-        container_name: react_webserver
-        ports:
-            - '80:80'
-        volumes:
-            - './:/usr/local/apache2/htdocs/'
-        image: 'bayesimpact/react-base'
+  web:
+    build: .
+    command: npm dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
